@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Validation from './LoginValidation'
-import axios from 'axios'
+import {axiosInstance as axios}  from "./apicalls"
 function Login() {
     const navigate=useNavigate()
     const [values,setValues]=useState({
@@ -21,7 +21,7 @@ function Login() {
         if(!errors.email && !errors.password){
             try{
               console.log("Hiii")
-            const response = await axios.post('http://localhost:8080/api/users/login',values)
+            const response = await axios.post('api/users/login',values)
             console.log(response)
             localStorage.setItem('token',response.data.token)
             navigate('/home')

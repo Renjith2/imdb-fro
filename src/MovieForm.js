@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'antd';
-import axios from 'axios';
+import {axiosInstance as axios}  from "./apicalls";
 
 // Separate component for fetching actors
 function ActorSelect({ actors }) {
@@ -23,7 +23,7 @@ function MovieForm() {
 
     useEffect(() => {
         // Fetch actors data when the component mounts
-        axios.get('http://localhost:8080/api/movie/actors')
+        axios.get('api/movie/actors')
             .then(res => {
                 setActors(res.data);
             })

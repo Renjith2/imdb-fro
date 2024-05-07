@@ -1,4 +1,4 @@
-import axios from "axios"
+import {axiosInstance as axios}  from "../apicalls"
 
 const get = (url) => {
     return axios.get(url);

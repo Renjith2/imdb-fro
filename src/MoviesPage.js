@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'antd';
 import moment from 'moment';
-import axios from 'axios';
+import {axiosInstance as axios}  from "./apicalls";
 import MovieForm from './MovieForm'; // Assuming MovieForm is in a separate file
 
 function MoviePage() {
@@ -9,7 +9,7 @@ function MoviePage() {
 
     useEffect(() => {
         // Fetch actors data when the component mounts
-        axios.get('http://localhost:8080/api/movie/actors')
+        axios.get('api/movie/actors')
             .then(res => {
                 setActor(res.data);
             })

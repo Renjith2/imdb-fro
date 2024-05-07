@@ -1,6 +1,6 @@
 import { Checkbox, Divider, Select, notification } from "antd";
 
-import axios from "axios";
+import {axiosInstance as axios}  from "./apicalls";
 import React, { useEffect, useState } from "react";
 import { Form, Input, DatePicker, Button, Row, Col, Card, Modal } from "antd";
 import MovieService from "./services/MovieService";
@@ -20,7 +20,7 @@ const MovieFormPage = () => {
     // MovieService.getMovies().then
     // Fetch actors data when the component mounts
     axios
-      .get("http://localhost:8080/api/producers/all")
+      .get("api/producers/all")
       .then((res) => {
         Setproducers(res.data);
       })
@@ -32,7 +32,7 @@ const MovieFormPage = () => {
   useEffect(() => {
     // Fetch actors data when the component mounts
     axios
-      .get("http://localhost:8080/api/actors/all")
+      .get("api/actors/all")
       .then((res) => {
         Setactors(res.data);
       })
@@ -77,7 +77,7 @@ const MovieFormPage = () => {
     
 
     axios
-      .post("http://localhost:8080/api/movies/add", newMovie)
+      .post("api/movies/add", newMovie)
       .then((response) => {
         console.log("Movie added successfully:", response.data);
         // Check if the response contains a message
@@ -116,7 +116,7 @@ const MovieFormPage = () => {
 
     // Send the new actor data to the API endpoint
     axios
-      .post("http://localhost:8080/api/actors/add", newActor)
+      .post("api/actors/add", newActor)
       .then((response) => {
         console.log("Actor added successfully:", response.data);
         // Check if the response contains a message
@@ -156,7 +156,7 @@ const MovieFormPage = () => {
 
     // Send the new producer data to the API endpoint
     axios
-      .post("http://localhost:8080/api/producers/add", newProducer)
+      .post("api/producers/add", newProducer)
       .then((response) => {
         console.log("Producer added successfully:", response.data);
         // Check if the response contains a message

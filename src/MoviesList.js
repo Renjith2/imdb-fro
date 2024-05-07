@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button, message, Table } from "antd";
 import moment from "moment";
 import MovieForm from "./MovieForm";
-import axios from "axios";
+import {axiosInstance as axios}  from "./apicalls";
 
 function MoviesList() {
   const [movies, Setmovies] = React.useState([]);
@@ -10,7 +10,7 @@ function MoviesList() {
     // MovieService.getMovies().then
     // Fetch actors data when the component mounts
     var moviePromise=axios
-      .get("http://localhost:8080/api/movies/all");
+      .get("api/movies/all");
       moviePromise.then((res) => {
      Setmovies(res.data.movies)
         console.log(movies)  
