@@ -23,7 +23,7 @@ function Register() {
       if (!errors.name && !errors.email && !errors.password) {
         console.log("Sending request with data:", values); 
           try {
-              const response = await axios.post('http://localhost:8080/api/users/register', values);
+              const response = await axios.post('https://imdb-1-qmc0.onrender.com/api/users/register', values);
               console.log(response.data);
               navigate('/');
           } catch (error) {
